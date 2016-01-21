@@ -23,51 +23,32 @@ if not intNum.isdigit():
     print "You inputed a non int or float. Please restart and input an int or float."
 
 
-#This block outputs the appropriate output
+#This block prints the appropriate output
 if len(intNum) <= 6:
     print "Output" , intNum
 else:
     if len(intNum) <= 9:
-
-        sys.stdout.write(intNum[0:len(intNum) - 6])   #prints digits to the left of the decimal place
-        if floatFlag == True:                         #if the number is a float, print the decimal place
-            sys.stdout.write(".")
-            if int(intNum[len(intNum) - 5]) >= 5:     #detects if rounding is necessary
-                digit = int(intNum[len(intNum) - 6]) + 1 #rounds up by one
-                sys.stdout.write(str(digit))
-            else:
-                sys.stdout.write(intNum[len(intNum) - 6]) #if rounding is not necesary, just print the digit
-        sys.stdout.write("M")                             #prints regardless of int or float
+        if floatFlag == True:
+            #slices string to get appropriate value
+            finalNum = intNum[0:len(intNum) - 6] + "." + intNum[len(intNum) - 6:len(intNum) - 4]
+            print (str(round(float(finalNum), 1))) + "M" #converts str to float, rounds, and converts back to str
+        else:
+            print intNum[0:len(intNum) - 6] + "M" #simple print if it is not a float
 
     elif len(intNum) <= 12 and len(intNum) > 9:
-
-        sys.stdout.write(intNum[0:len(intNum) - 9])
         if floatFlag == True:
-            sys.stdout.write(".")
-            if int(intNum[len(intNum) - 8]) >= 5:
-                digit = int(intNum[len(intNum) - 9]) + 1
-                sys.stdout.write(str(digit))
-            else:
-                sys.stdout.write(intNum[len(intNum) - 9])
-        sys.stdout.write("B")
-
+            finalNum = intNum[0:len(intNum) - 9] + "." + intNum[len(intNum) - 9:len(intNum) - 7]
+            print (str(round(float(finalNum), 1))) + "B"
+        else:
+            print intNum[0:len(intNum) - 9] + "B"
 
     elif len(intNum) <= 15 and len(intNum) > 12:
-
-        sys.stdout.write(intNum[0:len(intNum) - 12])
         if floatFlag == True:
-            sys.stdout.write(".")
-            if int(intNum[len(intNum) - 11]) >= 5:
-                digit = int(intNum[len(intNum) - 12]) + 1
-                sys.stdout.write(str(digit))
-            else:
-                sys.stdout.write(intNum[len(intNum) - 12])
-        sys.stdout.write("T")
+            finalNum = intNum[0:len(intNum) - 12] + "." + intNum[len(intNum) - 12:len(intNum) - 12]
+            print (str(round(float(finalNum), 1))) + "T"
+        else:
+            print intNum[0:len(intNum) - 12] + "T"
 
     else:
         print "Number too large, please restart and enter a # in the trillions or less"
 
-str = "12.56"
-fl = float(str)
-fl = round(fl, 1)
-print fl
