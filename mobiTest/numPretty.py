@@ -6,7 +6,7 @@ import sys
 #it can be sliced later for output.
 print "********** Welcome to the Number Prettifier **********"
 rawNum = raw_input('Enter a numerical value in the trillions or less: ')
-print "Input" , rawNum
+print "Input: " , rawNum
 
 #This block will remove digits after the decimal from the string and set floatFlag = true
 #This is done so that the len() method works correctly and to get output with a decimal place for float input
@@ -15,7 +15,6 @@ print "Input" , rawNum
 if "." in rawNum:
     intNum = rawNum[0:rawNum.find(".")]
     floatFlag = True
-    print "Initial: ", intNum
 else:
     floatFlag = False
     intNum = rawNum
@@ -25,9 +24,10 @@ if not intNum.isdigit():
 
 #This block prints the appropriate output
 if len(intNum) <= 6:
-    print "Output" , intNum
+    print "Output:" , intNum
 else:
     if len(intNum) <= 9:
+        print "Output:" ,
         if floatFlag == True:
             #slices string to get appropriate value
             finalNum = intNum[0:len(intNum) - 6] + "." + intNum[len(intNum) - 6:len(intNum) - 4]
